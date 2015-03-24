@@ -1,0 +1,5 @@
+name = Opening Body Snippet
+description = Places an inside the module specified code or script snippet directly after the opening body tag
+core = 7.x
+package = Custom
+files[] = opening_body_snippet.module
