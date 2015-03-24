@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implements hook_page_alter().
+ *
+ * Adds a post_render callback
+ */
+function opening_body_snippet_page_alter(&$page) {
+  $page['#post_render'][] = 'opening_body_snippet_callback';
+}
+
+/**
+ * Implements callback_post_render().
+ *
+ * Inserts snippet immediately following the opening body tag.
+ */
+function opening_body_snippet_callback(&$children, $elements) {
+  $snippet = '<script type="text/javascript">console.log(\'hello world\');</script>';
+  $children = preg_replace('@<body[^>]*>@', '$0' . $snippet, $children, 1);
+  return $children;
+}
